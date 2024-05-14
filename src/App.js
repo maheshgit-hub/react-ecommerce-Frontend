@@ -1,14 +1,14 @@
 import React from 'react';
 import Counter from './features/counter/Counter';
 import './App.css';
-import ProductList from './features/product-list/components/ProductList';
+import ProductList from './features/product/components/ProductList';
 import Home from './pages/Home';
 import Login from './features/auth/component/Login';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import CartPage from './pages/Cart';
 import CheckoutPage from './pages/Checkout';
-import ProductDetails from "./features/product-list/components/ProductDetails"
+import ProductDetails from "./features/product/components/ProductDetails"
 import ProductDetailPage from './pages/ProductDetailsPage';
 import {
   createBrowserRouter,
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
     element: (<CheckoutPage></CheckoutPage>)
   },
   {
-    path: "/Product-Detail",
+    path: "/product-detail",
     element: (<ProductDetailPage></ProductDetailPage>)
   },
 ]);
