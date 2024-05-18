@@ -4,7 +4,7 @@ import {
     increment,
     incrementAsync,
     selectCount,
-} from "../features/cart/CartSlice";
+} from "../features/cart/cartSlice";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
