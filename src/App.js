@@ -1,27 +1,19 @@
 import React, { useEffect } from "react";
-import Counter from "./features/counter/Counter";
 import "./App.css";
-import ProductList from "./features/product/components/ProductList";
 import Home from "./pages/Home";
-import Login from "./features/auth/component/Login";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import CartPage from "./pages/Cart";
 import CheckoutPage from "./pages/Checkout";
-import ProductDetails from "./features/product/components/ProductDetails";
 import ProductDetailPage from "./pages/ProductDetailsPage";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Protected from "./features/auth/component/Protected";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLoggedInUser } from "./features/auth/authSlice";
 import { fetchItemsByUserIdAsync } from "./features/cart/cartSlice";
 import PageNotFound from "./pages/404";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
+import UserOrders from "./features/user/component/UserOrders";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -68,7 +60,11 @@ const router = createBrowserRouter([
     ),
   },
   { path: "*", element: <PageNotFound></PageNotFound> },
-  { path: "/order-success", element: <OrderSuccessPage></OrderSuccessPage> },
+  {
+    path: "/order-success/:id",
+    element: <OrderSuccessPage></OrderSuccessPage>,
+  },
+  { path: "/orders", element: <UserOrders></UserOrders> },
 ]);
 
 function App() {

@@ -16,7 +16,10 @@ import {
   updateUserAsync,
 } from "../features/auth/authSlice";
 import { createOrder } from "../features/order/orderAPI";
-import { createOrderAsync } from "../features/order/orderSlice";
+import {
+  createOrderAsync,
+  selectCurrentOrder,
+} from "../features/order/orderSlice";
 
 function CheckoutPage() {
   const dispatch = useDispatch();
@@ -29,6 +32,7 @@ function CheckoutPage() {
 
   const items = useSelector(selectItems);
   const user = useSelector(selectLoggedInUser);
+  const currentOrder = useSelector(selectCurrentOrder);
   const totalAmount = items.reduce(
     (amount, item) => item.price * item.quantity + amount,
     0
@@ -46,7 +50,7 @@ function CheckoutPage() {
 
   const handleAddress = (e) => {
     console.log(e.target.value);
-    setSelectedAddress(e.target.value);
+    setSelectedAddress(user.addresses[e.target.value]);
   };
   const handlePayment = (e) => {
     console.log(e.target.value);
@@ -63,11 +67,17 @@ function CheckoutPage() {
       status: "pending",
     };
     dispatch(createOrderAsync(order));
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
   return (
     <>
       {!items.length && <Navigate to="/" replace={true}></Navigate>}
+      {currentOrder && (
+        <Navigate
+          to={`/order-success/${currentOrder.id}`}
+          replace={true}
+        ></Navigate>
+      )}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           <div className="lg:col-span-3">
@@ -263,7 +273,7 @@ function CheckoutPage() {
                             onChange={handleAddress}
                             name="address"
                             type="radio"
-                            value={address}
+                            value={index}
                             className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                           />
                           <div className="min-w-0 flex-auto">
