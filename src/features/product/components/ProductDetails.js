@@ -38,15 +38,17 @@ function classNames(...classes) {
 export default function ProductDetails() {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSize, setSelectedSize] = useState(sizes[2]);
-  const user = useSelector(selectLoggedInUser)
+  const user = useSelector(selectLoggedInUser);
   const product = useSelector(selectProductById);
   const dispatch = useDispatch();
   const params = useParams();
 
-  const handleCart=(e)=>{
+  const handleCart = (e) => {
     e.preventDefault();
-    dispatch(addToCartAsync({...product, quantity:1, user:user.id}))
-  }
+    const newItem = { ...product, quantity: 1, user: user.id };
+    delete newItem["id"];
+    dispatch(addToCartAsync(newItem));
+  };
   useEffect(() => {
     dispatch(fetchAllProductByIdAsync(params.id));
   }, [dispatch, params.id]);
