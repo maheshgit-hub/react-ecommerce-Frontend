@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchLoggedInUserOrdersAsync, selectUserOrders } from "../userSlice";
+import { fetchLoggedInUserOrdersAsync, selectUserInfo, selectUserOrders } from "../userSlice";
 import { selectLoggedInUser } from "../../auth/authSlice";
 
 export default function UserOrders() {
   const dispatch = useDispatch();
-  const user = useSelector(selectLoggedInUser);
+  const user = useSelector(selectUserInfo);
   const orders = useSelector(selectUserOrders);
 
   useEffect(() => {
@@ -77,7 +77,7 @@ export default function UserOrders() {
                   <p>{order.totalItems} items</p>
                 </div>
                 <p className="mt-0.5 text-sm text-gray-500">
-                  Shipping and taxes calculated at checkout.
+                  Shipping Address:
                 </p>
                 <div
                        

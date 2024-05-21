@@ -11,15 +11,13 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import {
-  selectLoggedInUser,
-  updateUserAsync,
-} from "../features/auth/authSlice";
+import { selectLoggedInUser, updateUserAsync } from "../features/auth/authSlice";
 import { createOrder } from "../features/order/orderAPI";
 import {
   createOrderAsync,
   selectCurrentOrder,
 } from "../features/order/orderSlice";
+import { selectUserInfo } from "../features/user/userSlice";
 
 function CheckoutPage() {
   const dispatch = useDispatch();
@@ -31,7 +29,8 @@ function CheckoutPage() {
   } = useForm();
 
   const items = useSelector(selectItems);
-  const user = useSelector(selectLoggedInUser);
+  const user = useSelector(selectUserInfo);
+  // const user = useSelector(selectLoggedInUser);
   const currentOrder = useSelector(selectCurrentOrder);
   const totalAmount = items.reduce(
     (amount, item) => item.price * item.quantity + amount,
