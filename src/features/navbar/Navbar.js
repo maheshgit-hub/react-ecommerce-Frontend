@@ -18,11 +18,11 @@ const user = {
 const navigation = [
   { name: "Dashboard", href: "#", current: true },
   { name: "Team", href: "#", current: false },
-];
+];   
 const userNavigation = [
   { name: "My Profile", link: "/profile" },
   { name: "My Orders", link: "/orders" },
-  { name: "Sign out", link: "/login" },
+  { name: "Sign out", link: "/logout" },
 ];
 
 function classNames(...classes) {

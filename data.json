@@ -1178,28 +1178,7 @@
       "addresses": []
     }
   ],
-  "cart": [
-    {
-      "id": "2d2a",
-      "title": "iPhone X",
-      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-      "price": 899,
-      "discountPercentage": 17.94,
-      "rating": 4.44,
-      "stock": 34,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/2/1.jpg",
-        "https://cdn.dummyjson.com/product-images/2/2.jpg",
-        "https://cdn.dummyjson.com/product-images/2/3.jpg",
-        "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
-      ],
-      "quantity": 1,
-      "user": "e29c"
-    }
-  ],
+  "cart": [],
   "orders": [
     {
       "id": "580d",
@@ -1573,6 +1552,69 @@
         "city": "Pune",
         "state": "maharashtra",
         "pinCode": "411033"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "0455",
+      "items": [
+        {
+          "id": "2d2a",
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/2/1.jpg",
+            "https://cdn.dummyjson.com/product-images/2/2.jpg",
+            "https://cdn.dummyjson.com/product-images/2/3.jpg",
+            "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": "e29c"
+        }
+      ],
+      "totalAmount": 899,
+      "totalItems": 1,
+      "user": {
+        "id": "e29c",
+        "email": "test@gmail.com",
+        "password": "Test@gmail",
+        "addresses": [
+          {
+            "name": "mahesh",
+            "email": "test@gmail.com",
+            "city": "mumbai",
+            "state": "NDA",
+            "pinCode": "434121",
+            "phone": "992231231",
+            "street": "kothrud"
+          },
+          {
+            "name": "PD",
+            "email": "pd@gmail.com",
+            "phone": "99999999999 ",
+            "street": "qweq",
+            "city": "asdqw",
+            "state": "asd",
+            "pinCode": "1321232"
+          }
+        ]
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "mahesh",
+        "email": "test@gmail.com",
+        "city": "mumbai",
+        "state": "NDA",
+        "pinCode": "434121",
+        "phone": "992231231",
+        "street": "kothrud"
       },
       "status": "pending"
     }
