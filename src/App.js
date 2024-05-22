@@ -10,7 +10,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Protected from "./features/auth/component/Protected";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLoggedInUser } from "./features/auth/authSlice";
-import { fetchItemsByUserIdAsync } from "./features/cart/cartSlice";
+import { fetchItemsByUserIdAsync } from "./features/cart/CartSlice";
 import PageNotFound from "./pages/404";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
 import UserOrderPage from "./pages/UserOrderPage";
@@ -18,6 +18,10 @@ import UserProfilePage from "./pages/UserProfilePage";
 import { fetchLoggedInUserAsync } from "./features/user/userSlice";
 import Logout from "./features/auth/component/Logout";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import AdminHome from "./pages/AdminHome";
+import ProtectedAdmin from "./features/auth/component/ProtectedAdmin";
+import AdminProductDetailPage from "./pages/AdminProductDetailsPage";
+import AdminProductFormPage from "./pages/AdminProductFormPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +30,15 @@ const router = createBrowserRouter([
         {" "}
         <Home></Home>
       </Protected>
+    ),
+  },
+  {
+    path: "/admin",
+    element: (
+      <ProtectedAdmin>
+        {" "}
+        <AdminHome></AdminHome>
+      </ProtectedAdmin>
     ),
   },
   {
@@ -64,7 +77,34 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/order-success/:id",
+    path: "/admin/product-detail/:id",
+    element: (
+      <ProtectedAdmin>
+        {" "}
+        <AdminProductDetailPage></AdminProductDetailPage>
+      </ProtectedAdmin>
+    ),
+  },
+  {
+    path: "/admin/product-form",
+    element: (
+      <ProtectedAdmin>
+        {" "}
+        <AdminProductFormPage></AdminProductFormPage>
+      </ProtectedAdmin>
+    ),
+  },
+  {
+    path: "/admin/product-form/edit/:id",
+    element: (
+      <ProtectedAdmin>
+        {" "}
+        <AdminProductFormPage></AdminProductFormPage>
+      </ProtectedAdmin>
+    ),
+  },
+  {
+    path: "/admin/order-success/:id",
     element: <OrderSuccessPage></OrderSuccessPage>,
   },
   { path: "/orders", element: <UserOrderPage></UserOrderPage> },
@@ -94,3 +134,5 @@ function App() {
 }
 
 export default App;
+
+// 5:41:00
