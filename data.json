@@ -1167,7 +1167,7 @@
     {
       "id": "e29c",
       "email": "test@gmail.com",
-      "password": "Test@gmail",
+      "password": "test",
       "role": "user",
       "addresses": [
         {
@@ -1191,20 +1191,93 @@
       ]
     },
     {
-      "id": "49e0",
-      "email": "test1@gmail.com",
-      "password": "Test1@gmail",
-      "addresses": []
-    },
-    {
       "id": "fe7a",
       "email": "admin1@gmail.com",
-      "password": "Admin1@gmail",
+      "password": "admin",
       "addresses": [],
       "role": "admin"
+    },
+    {
+      "id": "a6bb",
+      "email": "qwerty@gmail.com",
+      "password": "qwerty",
+      "addresses": [
+        {
+          "name": "qwerty",
+          "email": "qwerty@gmail.com",
+          "phone": "90909090909090",
+          "street": "qwertyqwertyqwertyqwery",
+          "city": "qwertty",
+          "state": "qwerty",
+          "pinCode": "909090"
+        }
+      ],
+      "role": "user"
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "id": "651e",
+      "title": "Samsung Galaxy Book",
+      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+      "price": 1499,
+      "discountPercentage": 4.15,
+      "rating": 4.25,
+      "stock": 50,
+      "brand": "Samsung",
+      "category": "laptops",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/7/1.jpg",
+        "https://cdn.dummyjson.com/product-images/7/2.jpg",
+        "https://cdn.dummyjson.com/product-images/7/3.jpg",
+        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+      ],
+      "quantity": 1,
+      "user": "e29c"
+    },
+    {
+      "id": "60ea",
+      "title": "iPhone X",
+      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+      "price": 899,
+      "discountPercentage": 17.94,
+      "rating": 4.44,
+      "stock": 34,
+      "brand": "Apple",
+      "category": "smartphones",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/2/1.jpg",
+        "https://cdn.dummyjson.com/product-images/2/2.jpg",
+        "https://cdn.dummyjson.com/product-images/2/3.jpg",
+        "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+      ],
+      "quantity": 1,
+      "user": "e29c"
+    },
+    {
+      "id": "3826",
+      "title": "iPhone 9",
+      "description": "An apple mobile which is nothing like apple",
+      "price": 222,
+      "discountPercentage": 12.96,
+      "rating": 0,
+      "stock": 94,
+      "brand": "Apple",
+      "category": "smartphones",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/1/1.jpg",
+        "https://cdn.dummyjson.com/product-images/1/2.jpg",
+        "https://cdn.dummyjson.com/product-images/1/3.jpg",
+        "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
+      ],
+      "deleted": true,
+      "quantity": 1,
+      "user": "e29c"
+    }
+  ],
   "orders": [
     {
       "id": "580d",
@@ -1268,7 +1341,7 @@
         "state": "maharashtra",
         "pinCode": "411033"
       },
-      "status": "pending"
+      "status": "dispatched"
     },
     {
       "id": "f48b",
@@ -1396,7 +1469,7 @@
         "state": "maharashtra",
         "pinCode": "411033"
       },
-      "status": "pending"
+      "status": "delivered"
     },
     {
       "id": "f124",
@@ -1460,7 +1533,7 @@
         "state": "maharashtra",
         "pinCode": "411033"
       },
-      "status": "pending"
+      "status": "cancelled"
     },
     {
       "id": "16ea",
@@ -1641,6 +1714,236 @@
         "pinCode": "434121",
         "phone": "992231231",
         "street": "kothrud"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "b726",
+      "items": [
+        {
+          "id": "651e",
+          "title": "Samsung Galaxy Book",
+          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+          "price": 1499,
+          "discountPercentage": 4.15,
+          "rating": 4.25,
+          "stock": 50,
+          "brand": "Samsung",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/7/1.jpg",
+            "https://cdn.dummyjson.com/product-images/7/2.jpg",
+            "https://cdn.dummyjson.com/product-images/7/3.jpg",
+            "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": "e29c"
+        }
+      ],
+      "totalAmount": 1437,
+      "totalItems": 1,
+      "user": {
+        "id": "e29c",
+        "email": "test@gmail.com",
+        "password": "test",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "mahesh",
+            "email": "test@gmail.com",
+            "city": "mumbai",
+            "state": "NDA",
+            "pinCode": "434121",
+            "phone": "992231231",
+            "street": "kothrud"
+          },
+          {
+            "name": "PD",
+            "email": "pd@gmail.com",
+            "phone": "99999999999 ",
+            "street": "qweq",
+            "city": "asdqw",
+            "state": "asd",
+            "pinCode": "1321232"
+          }
+        ]
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "mahesh",
+        "email": "test@gmail.com",
+        "city": "mumbai",
+        "state": "NDA",
+        "pinCode": "434121",
+        "phone": "992231231",
+        "street": "kothrud"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "145e",
+      "items": [
+        {
+          "id": "25c4",
+          "title": "iPhone 9",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 222,
+          "discountPercentage": 12.96,
+          "rating": 0,
+          "stock": 94,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/1/1.jpg",
+            "https://cdn.dummyjson.com/product-images/1/2.jpg",
+            "https://cdn.dummyjson.com/product-images/1/3.jpg",
+            "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
+          ],
+          "deleted": true,
+          "quantity": 1,
+          "user": "a6bb"
+        }
+      ],
+      "totalAmount": 193,
+      "totalItems": 1,
+      "user": {
+        "id": "a6bb",
+        "email": "qwerty@gmail.com",
+        "password": "qwerty",
+        "addresses": [
+          {
+            "name": "qwerty",
+            "email": "qwerty@gmail.com",
+            "phone": "90909090909090",
+            "street": "qwertyqwertyqwertyqwery",
+            "city": "qwertty",
+            "state": "qwerty",
+            "pinCode": "909090"
+          }
+        ],
+        "role": "user"
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "qwerty",
+        "email": "qwerty@gmail.com",
+        "phone": "90909090909090",
+        "street": "qwertyqwertyqwertyqwery",
+        "city": "qwertty",
+        "state": "qwerty",
+        "pinCode": "909090"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "6db6",
+      "items": [
+        {
+          "id": "25c4",
+          "title": "iPhone 9",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 222,
+          "discountPercentage": 12.96,
+          "rating": 0,
+          "stock": 94,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/1/1.jpg",
+            "https://cdn.dummyjson.com/product-images/1/2.jpg",
+            "https://cdn.dummyjson.com/product-images/1/3.jpg",
+            "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
+          ],
+          "deleted": true,
+          "quantity": 1,
+          "user": "a6bb"
+        }
+      ],
+      "totalAmount": 193,
+      "totalItems": 1,
+      "user": {
+        "id": "a6bb",
+        "email": "qwerty@gmail.com",
+        "password": "qwerty",
+        "addresses": [
+          {
+            "name": "qwerty",
+            "email": "qwerty@gmail.com",
+            "phone": "90909090909090",
+            "street": "qwertyqwertyqwertyqwery",
+            "city": "qwertty",
+            "state": "qwerty",
+            "pinCode": "909090"
+          }
+        ],
+        "role": "user"
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "qwerty",
+        "email": "qwerty@gmail.com",
+        "phone": "90909090909090",
+        "street": "qwertyqwertyqwertyqwery",
+        "city": "qwertty",
+        "state": "qwerty",
+        "pinCode": "909090"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "87cc",
+      "items": [
+        {
+          "id": "1889",
+          "title": "Huawei P30",
+          "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+          "price": 499,
+          "discountPercentage": 10.58,
+          "rating": 4.09,
+          "stock": 32,
+          "brand": "Huawei",
+          "category": "smartphones",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/5/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/5/1.jpg",
+            "https://cdn.dummyjson.com/product-images/5/2.jpg",
+            "https://cdn.dummyjson.com/product-images/5/3.jpg"
+          ],
+          "quantity": 1,
+          "user": "a6bb"
+        }
+      ],
+      "totalAmount": 446,
+      "totalItems": 1,
+      "user": {
+        "id": "a6bb",
+        "email": "qwerty@gmail.com",
+        "password": "qwerty",
+        "addresses": [
+          {
+            "name": "qwerty",
+            "email": "qwerty@gmail.com",
+            "phone": "90909090909090",
+            "street": "qwertyqwertyqwertyqwery",
+            "city": "qwertty",
+            "state": "qwerty",
+            "pinCode": "909090"
+          }
+        ],
+        "role": "user"
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "qwerty",
+        "email": "qwerty@gmail.com",
+        "phone": "90909090909090",
+        "street": "qwertyqwertyqwertyqwery",
+        "city": "qwertty",
+        "state": "qwerty",
+        "pinCode": "909090"
       },
       "status": "pending"
     }
