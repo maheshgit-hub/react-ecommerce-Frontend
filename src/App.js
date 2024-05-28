@@ -23,6 +23,14 @@ import ProtectedAdmin from "./features/auth/component/ProtectedAdmin";
 import AdminProductDetailPage from "./pages/AdminProductDetailsPage";
 import AdminProductFormPage from "./pages/AdminProductFormPage";
 import AdminOrdersPage from "./pages/AdminOrdersPage";
+import { positions, Provider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
+
+const options = {
+  timeout: 5000,
+  position: positions.BOTTOM_CENTER,
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -138,11 +146,13 @@ function App() {
   }, [dispatch, user]);
   return (
     <div className="App">
-      <RouterProvider router={router} />
+      <Provider template={AlertTemplate} {...options}>
+        <RouterProvider router={router} />
+      </Provider>
     </div>
   );
 }
 
 export default App;
 
-// 6:34
+// 7:40

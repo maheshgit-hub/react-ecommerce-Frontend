@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { selectLoggedInUser } from "../../auth/authSlice";
-import { addToCartAsync } from "../../cart/CartSlice";
-import { fetchProductByIdAsync, selectProductById } from "../ProductSlice";
+import { addToCartAsync, selectItems } from "../../cart/CartSlice";
+import { fetchProductByIdAsync, selectProductById, selectProductListStatus } from "../ProductSlice";
 import { discountedPrice } from "../../../app/constants";
+import { useAlert } from "react-alert";
+import { TailSpin } from "react-loader-spinner";
 const colors = [
   { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
   { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
@@ -42,18 +44,42 @@ export default function ProductDetails() {
   const product = useSelector(selectProductById);
   const dispatch = useDispatch();
   const params = useParams();
-
+  const items = useSelector(selectItems);
+  const alert = useAlert();
+  const status=useSelector(selectProductListStatus)
   const handleCart = (e) => {
     e.preventDefault();
-    const newItem = { ...product, quantity: 1, user: user.id };
-    delete newItem["id"];
-    dispatch(addToCartAsync(newItem));
+    if (items.findIndex((item) => item.productId === product.id) < 0) {
+      const newItem = {
+        ...product,
+        productId: product.id,
+        quantity: 1,
+        user: user.id,
+      };
+      delete newItem["id"];
+      dispatch(addToCartAsync(newItem));
+      alert.success("Item already added");
+    } else {
+      alert.error("Item already added");
+    }
   };
   useEffect(() => {
     dispatch(fetchProductByIdAsync(params.id));
   }, [dispatch, params.id]);
   return (
     <div className="bg-white">
+      {status === "loading" ? (
+              <TailSpin
+                visible={true}
+                height="80"
+                width="80"
+                color="rgb(79,70,229)"
+                ariaLabel="tail-spin-loading"
+                radius="1"
+                wrapperStyle={{}}
+                wrapperClass=""
+              />
+            ) : null}
       {product && (
         <div className="pt-6">
           <nav aria-label="Breadcrumb">

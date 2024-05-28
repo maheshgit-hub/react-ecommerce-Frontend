@@ -38,6 +38,8 @@ function AdminOrders() {
 
   const handlePage = (page) => {
     setPage(page);
+    const pagination={_page:page,_limit:ITEM_PER_PAGE}
+    dispatch(fetchAllOrdersAsync(pagination))
   };
 
   const handleSort = (sortOption) => {
