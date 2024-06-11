@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ITEM_PER_PAGE, discountedPrice } from "../../../app/constants";
+import { ITEMS_PER_PAGE, discountedPrice } from "../../../app/constants";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAllOrdersAsync,
@@ -38,8 +38,6 @@ function AdminOrders() {
 
   const handlePage = (page) => {
     setPage(page);
-    const pagination={_page:page,_limit:ITEM_PER_PAGE}
-    dispatch(fetchAllOrdersAsync(pagination))
   };
 
   const handleSort = (sortOption) => {
@@ -64,7 +62,7 @@ function AdminOrders() {
   };
 
   useEffect(() => {
-    const pagination = { _page: page, _limit: ITEM_PER_PAGE };
+    const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
     dispatch(fetchAllOrdersAsync({ sort, pagination }));
   }, [dispatch, page, sort]);
 
@@ -118,7 +116,10 @@ function AdminOrders() {
               </thead>
               <tbody className="text-gray-600 text-sm font-light">
                 {orders.map((order) => (
-                  <tr className="border-b border-gray-200 hover:bg-gray-100">
+                  <tr
+                    key={order.id}
+                    className="border-b border-gray-200 hover:bg-gray-100"
+                  >
                     <td className="py-3 px-6 text-left whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="mr-2"></div>
@@ -126,8 +127,8 @@ function AdminOrders() {
                       </div>
                     </td>
                     <td className="py-3 px-6 text-left">
-                      {order.items.map((item) => (
-                        <div className="flex items-center">
+                      {order.items.map((item, index) => (
+                        <div key={index} className="flex items-center">
                           <div className="mr-2">
                             <img
                               className="w-6 h-6 rounded-full"
@@ -208,4 +209,5 @@ function AdminOrders() {
     </div>
   );
 }
+
 export default AdminOrders;

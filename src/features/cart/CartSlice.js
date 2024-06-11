@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   addToCart,
-  fetchItemsByUserId,
-  updateCart,
   deleteItemFromCart,
+  fetchItemsByUserId,
   resetCart,
-} from "./CartAPI";
+  updateCart,
+} from "./cartAPI";
 
 const initialState = {
   status: "idle",
@@ -16,6 +16,7 @@ export const addToCartAsync = createAsyncThunk(
   "cart/addToCart",
   async (item) => {
     const response = await addToCart(item);
+    // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
 );
@@ -24,6 +25,7 @@ export const fetchItemsByUserIdAsync = createAsyncThunk(
   "cart/fetchItemsByUserId",
   async (userId) => {
     const response = await fetchItemsByUserId(userId);
+    // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
 );
@@ -32,13 +34,16 @@ export const updateCartAsync = createAsyncThunk(
   "cart/updateCart",
   async (update) => {
     const response = await updateCart(update);
+    // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
 );
+
 export const deleteItemFromCartAsync = createAsyncThunk(
   "cart/deleteItemFromCart",
   async (itemId) => {
     const response = await deleteItemFromCart(itemId);
+    // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
 );
@@ -47,18 +52,15 @@ export const resetCartAsync = createAsyncThunk(
   "cart/resetCart",
   async (userId) => {
     const response = await resetCart(userId);
+    // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
 );
 
-export const counterSlice = createSlice({
+export const cartSlice = createSlice({
   name: "cart",
   initialState,
-  reducers: {
-    increment: (state) => {
-      state.value += 1;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(addToCartAsync.pending, (state) => {
@@ -105,8 +107,9 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { increment } = counterSlice.actions;
+// export const { increment } = cartSlice.actions;
 
 export const selectItems = (state) => state.cart.items;
 export const selectCartStatus = (state) => state.cart.status;
-export default counterSlice.reducer;
+
+export default cartSlice.reducer;

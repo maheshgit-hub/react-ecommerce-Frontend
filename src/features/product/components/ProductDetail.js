@@ -1,14 +1,21 @@
-import { RadioGroup } from "@headlessui/react";
+import { useState, useEffect } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
-import { useEffect, useState } from "react";
+import { RadioGroup } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchProductByIdAsync,
+  selectProductById,
+  selectProductListStatus,
+} from "../productSlice";
 import { useParams } from "react-router-dom";
+import { addToCartAsync, selectItems } from "../../cart/cartSlice";
 import { selectLoggedInUser } from "../../auth/authSlice";
-import { addToCartAsync, selectItems } from "../../cart/CartSlice";
-import { fetchProductByIdAsync, selectProductById, selectProductListStatus } from "../ProductSlice";
 import { discountedPrice } from "../../../app/constants";
 import { useAlert } from "react-alert";
-import { TailSpin } from "react-loader-spinner";
+import { Grid } from "react-loader-spinner";
+
+// TODO: In server data we will add colors, sizes , highlights. to each product
+
 const colors = [
   { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
   { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
@@ -24,7 +31,6 @@ const sizes = [
   { name: "2XL", inStock: true },
   { name: "3XL", inStock: true },
 ];
-// const reviews = { href: "#", average: 4, totalCount: 117 };
 
 const highlights = [
   "Hand cut and sewn locally",
@@ -37,56 +43,58 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function ProductDetails() {
+// TODO : Loading UI
+
+export default function ProductDetail() {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSize, setSelectedSize] = useState(sizes[2]);
   const user = useSelector(selectLoggedInUser);
+  const items = useSelector(selectItems);
   const product = useSelector(selectProductById);
   const dispatch = useDispatch();
   const params = useParams();
-  const items = useSelector(selectItems);
   const alert = useAlert();
-  const status=useSelector(selectProductListStatus)
+  const status = useSelector(selectProductListStatus);
+
   const handleCart = (e) => {
     e.preventDefault();
-    if (items.findIndex((item) => item.productId === product.id) < 0) {
+    if (items.findIndex((item) => item.product.id === product.id) < 0) {
+      console.log({ items, product });
       const newItem = {
-        ...product,
-        productId: product.id,
+        product: product.id,
         quantity: 1,
         user: user.id,
       };
-      delete newItem["id"];
       dispatch(addToCartAsync(newItem));
-      alert.success("Item already added");
+      // TODO: it will be based on server response of backend
+      alert.error("Item added to Cart");
     } else {
-      alert.error("Item already added");
+      alert.error("Item Already added");
     }
   };
+
   useEffect(() => {
     dispatch(fetchProductByIdAsync(params.id));
   }, [dispatch, params.id]);
+
   return (
     <div className="bg-white">
       {status === "loading" ? (
-              <TailSpin
-                visible={true}
-                height="80"
-                width="80"
-                color="rgb(79,70,229)"
-                ariaLabel="tail-spin-loading"
-                radius="1"
-                wrapperStyle={{}}
-                wrapperClass=""
-              />
-            ) : null}
+        <Grid
+          height="80"
+          width="80"
+          color="rgb(79, 70, 229) "
+          ariaLabel="grid-loading"
+          radius="12.5"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      ) : null}
       {product && (
         <div className="pt-6">
           <nav aria-label="Breadcrumb">
-            <ol
-              role="list"
-              className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
-            >
+            <ol className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
               {product.breadcrumbs &&
                 product.breadcrumbs.map((breadcrumb) => (
                   <li key={breadcrumb.id}>

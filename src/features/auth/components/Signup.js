@@ -1,17 +1,20 @@
-import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+
 import { selectLoggedInUser, createUserAsync } from "../authSlice";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+
 export default function Signup() {
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   return (
     <>
       {user && <Navigate to="/" replace={true}></Navigate>}
@@ -37,7 +40,8 @@ export default function Signup() {
                   email: data.email,
                   password: data.password,
                   addresses: [],
-                  role:'user'
+                  role: "user",
+                  //TODO: this role can be directly given on backend
                 })
               );
               console.log(data);
@@ -64,7 +68,7 @@ export default function Signup() {
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 {errors.email && (
-                  <p className=" text-red-500">{errors.email.message}</p>
+                  <p className="text-red-500">{errors.email.message}</p>
                 )}
               </div>
             </div>
@@ -77,14 +81,6 @@ export default function Signup() {
                 >
                   Password
                 </label>
-                <div className="text-sm">
-                  <Link
-                    to="/forgot-password"
-                    className="font-semibold text-indigo-600 hover:text-indigo-500"
-                  >
-                    Forgot password?
-                  </Link>
-                </div>
               </div>
               <div className="mt-2">
                 <input
@@ -103,10 +99,11 @@ export default function Signup() {
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 {errors.password && (
-                  <p className=" text-red-500">{errors.password.message}</p>
+                  <p className="text-red-500">{errors.password.message}</p>
                 )}
               </div>
             </div>
+
             <div>
               <div className="flex items-center justify-between">
                 <label
@@ -128,24 +125,25 @@ export default function Signup() {
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 {errors.confirmPassword && (
-                  <p className=" text-red-500">
+                  <p className="text-red-500">
                     {errors.confirmPassword.message}
                   </p>
                 )}
               </div>
             </div>
+
             <div>
               <button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Sign up
+                Sign Up
               </button>
             </div>
           </form>
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            Already a member?{" "}
+            Already a Member?{" "}
             <Link
               to="/login"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { Link, Navigate, useFetcher, useParams } from "react-router-dom";
-import { resetCartAsync } from "../features/cart/CartSlice";
+import { Link, Navigate, useParams } from "react-router-dom";
+import { resetCartAsync } from "../features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLoggedInUser } from "../features/auth/authSlice";
 import { resetOrder } from "../features/order/orderSlice";
@@ -9,12 +9,14 @@ function OrderSuccessPage() {
   const params = useParams();
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
+
   useEffect(() => {
-    //reset cart
+    // reset cart
     dispatch(resetCartAsync(user.id));
-    //reset currentOrder
+    // reset currentOrder
     dispatch(resetOrder());
-  }, [dispatch]);
+  }, [dispatch, user]);
+
   return (
     <>
       {!params.id && <Navigate to="/" replace={true}></Navigate>}

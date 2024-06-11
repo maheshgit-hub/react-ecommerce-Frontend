@@ -1,15 +1,18 @@
-import { RadioGroup } from "@headlessui/react";
+import { useState, useEffect } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
-import { useEffect, useState } from "react";
+import { RadioGroup } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { selectLoggedInUser } from "../../auth/authSlice";
-import { addToCartAsync } from "../../cart/CartSlice";
 import {
   fetchProductByIdAsync,
   selectProductById,
-} from "../../product/ProductSlice";
+} from "../../product/productSlice";
+import { useParams } from "react-router-dom";
+import { addToCartAsync } from "../../cart/cartSlice";
+import { selectLoggedInUser } from "../../auth/authSlice";
 import { discountedPrice } from "../../../app/constants";
+
+// TODO: In server data we will add colors, sizes , highlights. to each product
+
 const colors = [
   { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
   { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
@@ -25,7 +28,6 @@ const sizes = [
   { name: "2XL", inStock: true },
   { name: "3XL", inStock: true },
 ];
-// const reviews = { href: "#", average: 4, totalCount: 117 };
 
 const highlights = [
   "Hand cut and sewn locally",
@@ -38,7 +40,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function AdminProductDetails() {
+// TODO : Loading UI
+
+export default function AdminProductDetail() {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSize, setSelectedSize] = useState(sizes[2]);
   const user = useSelector(selectLoggedInUser);
@@ -52,18 +56,17 @@ export default function AdminProductDetails() {
     delete newItem["id"];
     dispatch(addToCartAsync(newItem));
   };
+
   useEffect(() => {
     dispatch(fetchProductByIdAsync(params.id));
   }, [dispatch, params.id]);
+
   return (
     <div className="bg-white">
       {product && (
         <div className="pt-6">
           <nav aria-label="Breadcrumb">
-            <ol
-              role="list"
-              className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
-            >
+            <ol className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
               {product.breadcrumbs &&
                 product.breadcrumbs.map((breadcrumb) => (
                   <li key={breadcrumb.id}>
